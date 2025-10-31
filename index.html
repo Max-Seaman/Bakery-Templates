@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home Page Template</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Birthstone&display=swap');
+        </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <!-- Materialize JS (required for the carousel to work) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    </head>
+
+    <body>
+        <header class="bg-[#51658f] text-white">
+            <div class="container mx-auto px-4 py-6 flex items-center justify-between">
+                <!-- Logo -->
+                <a href="/" class="flex items-center">
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl md:pb-1 font-[Birthstone]">Baker's Dozen</h1>
+                </a>
+
+                <!-- Nav -->
+                <div class="header flex items-center space-x-8 uppercase text-md lg:text-lg font-semibold justify-center md:pt-1">
+                    <!-- Desktop Links -->
+                    <a href="/" class="tab hidden md:inline">About</a>
+                    <a href="/" class="tab hidden md:inline">Products</a>
+                    <a href="/" class="tab hidden md:inline">Testimonials</a>
+                    <a href="/" class="tab hidden md:inline">Order</a>
+
+                    <!-- Mobile Toggle -->
+                    <i id="menu-toggle" class="fa-solid fa-angle-down md:hidden cursor-pointer transition-transform duration-300"></i>
+
+                    <div class="w-[50px] aspect-square rounded-full bg-[#3c4b6f] flex items-center justify-center cursor-pointer hover:bg-[#364464]">
+                        <i class="fa-solid fa-phone-flip text-orange-400 text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Banner/Hero Section-->
+        <div class="relative flex items-center justify-between bg-[#fff8ee] overflow-hidden shadow-md relative min-h-[480px]">
+            <!-- Left Section -->
+            <div class="hidden md:flex-1 md:flex items-center justify-center overflow-visible">
+                <div class="absolute z-40 p-10 hidden md:flex md:w-[750px] lg:w-[850px] xl:w-[1000px] 2xl:w-[1270px] aspect-square flex flex-col items-center justify-center rounded-full border-[10px] border-[#3c4b6f] bg-[#FFF8EE]"></div>
+            </div>
+
+            <!-- Right Section -->
+            <div class="w-full md:block md:flex-1 relative min-h-[480px]">
+                <img src="img/hero-bread.jpg" alt="Fresh bread" class="absolute inset-0 w-full h-full object-cover filter brightness-50 md:brightness-100">
+            </div>
+
+            <!-- Text Content -->
+            <div class="absolute inset-0 flex items-center justify-center md:justify-start z-50">
+                <div class="container mx-auto px-4 relative">
+                    <div class="flex flex-col items-center text-center md:items-start md:text-left text-[#fff8ee] md:text-[#3c4b6f]">
+                        <h2 class="text-7xl sm:text-8xl 2xl:text-9xl font-semibold italic mb-8 font-[Birthstone]">
+                            Everyday Fresh
+                        </h2>
+                        <p class="uppercase text-sm xl:text-lg 2xl:text-xl mb-6 xl:mb-8">
+                            The finest breads and pastries in the heart of Norwich
+                        </p>
+                        <a href="/" class="bg-orange-500 hover:bg-orange-600 text-white text-center text-md xl:text-lg 2xl:text-2xl py-4 rounded-full font-semibold z-10 tracking-wider uppercase pt-3 w-[200px] md:w-[300px]">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs Section -->
+        <div class="w-full flex justify-evenly md:justify-between my-10 container mx-auto px-2 text-[#51658f]">
+            <div class="tab cursor-pointer flex flex-col items-center" onclick="showTab(0)">
+                <i class="fa-solid fa-bread-slice text-5xl pb-2"></i>
+                <h3 class="uppercase text-2xl lg:text-3xl mt-4 text-center max-w-sm pb-4 font-bold tracking-widest hidden md:block">
+                    Fresh bread baked daily
+                </h3>
+            </div>
+            <div class="tab cursor-pointer flex flex-col items-center" onclick="showTab(1)">
+                <i class="fa-solid fa-cookie-bite text-5xl pb-2"></i>
+                <h3 class="uppercase text-2xl lg:text-3xl mt-4 text-center max-w-sm pb-4 font-bold tracking-widest hidden md:block">
+                    Handmade sweets and pastries
+                </h3>
+            </div>
+            <div class="tab cursor-pointer flex flex-col items-center" onclick="showTab(2)">
+                <i class="fa-solid fa-cake-candles text-5xl pb-2"></i>
+                <h3 class="uppercase text-2xl lg:text-3xl mt-4 text-center max-w-sm pb-4 font-bold tracking-widest hidden md:block">
+                    Specially made for your events
+                </h3>
+            </div>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="w-full container mx-auto px-4 text-[#51658f]">
+            <!-- Fresh Bread Tab -->
+            <div id="tab-content-0" class="tab-content flex flex-col">
+                <p class="uppercase text-xl lg:text-2xl font-bold tracking-widest mb-16 text-center">
+                    Established in 2011, our bread is hand-crafted using the finest local ingredients.
+                </p>
+                <div class="flex flex-col items-center md:flex-row md:items-start">
+                    <!-- Circular Image with Background Circles -->
+                    <div class="relative flex-shrink-0">
+                        <div class="absolute md:w-[130px] xl:w-[200px] 2xl:w-[260px] aspect-square bg-[#fff8ee] rounded-full top-[-10px] right-[-10px] lg:top-[-15px] lg:right-[-15px] 2xl:top-[-30px] 2xl:right-[-30px] -z-10 shadow-lg"></div>
+                        <div class="absolute md:w-[160px] xl:w-[250px] 2xl:w-[310px] aspect-square bg-[#51658f] rounded-full bottom-[-10px] right-[-10px] lg:bottom-[-15px] lg:right-[-15px] 2xl:bottom-[-30px] 2xl:right-[-30px] -z-10 shadow-lg"></div>
+
+                        <div class="border-4 border-white rounded-full overflow-hidden z-10 max-w-md md:max-w-none">
+                            <img src="img/bread.jpg"
+                                alt="Bread Loafs"
+                                class="md:w-[200px] xl:w-[300px] 2xl:w-[380px] aspect-square object-cover rounded-full">
+                        </div>
+                    </div>
+                    <div class="text-lg xl:text-xl text-center md:ml-24 md:text-left self-center">
+                        <p class="my-10 md:mt-0">
+                            Freshly baked each day, our bread combines traditional recipes with the finest locally sourced ingredients, ensuring a perfect balance of flavor, texture, and aroma in every loaf.
+                        </p>
+                        <p class="mb-10 md:mb-0 xl:mb-10">
+                            From crusty sourdough to soft, buttery rolls, every batch is handcrafted with care. Our bakers take pride in creating bread that not only tastes exceptional but also brings warmth and comfort to your table.
+                        </p>
+                        <p class="md:hidden xl:block">
+                            Whether enjoyed at breakfast, as part of a hearty lunch, or alongside a comforting dinner, our bread is made to elevate every meal. Each loaf is a testament to our dedication to quality, craftsmanship, and the joy of sharing fresh, wholesome bread with our community.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Handmade Sweets & Pastries Tab -->
+            <div id="tab-content-1" class="tab-content hidden flex flex-col">
+                <p class="uppercase text-xl lg:text-2xl font-bold tracking-widest mb-16 text-center">
+                    From flaky pastries to rich confections, every creation is made with love and care.
+                </p>
+                <div class="flex flex-col items-center md:flex-row md:items-start">
+                    <div class="relative flex-shrink-0">
+                        <div class="absolute md:w-[130px] xl:w-[200px] 2xl:w-[260px] aspect-square bg-[#fff8ee] rounded-full top-[-10px] right-[-10px] lg:top-[-15px] lg:right-[-15px] 2xl:top-[-30px] 2xl:right-[-30px] -z-10 shadow-lg"></div>
+                        <div class="absolute md:w-[160px] xl:w-[250px] 2xl:w-[310px] aspect-square bg-[#51658f] rounded-full bottom-[-10px] right-[-10px] lg:bottom-[-15px] lg:right-[-15px] 2xl:bottom-[-30px] 2xl:right-[-30px] -z-10 shadow-lg"></div>
+
+                        <div class="border-4 border-white rounded-full overflow-hidden z-10 max-w-md md:max-w-none">
+                            <img src="img/cakes-and-pastries.jpg"
+                                alt="Cupcakes"
+                                class="md:w-[200px] xl:w-[300px] 2xl:w-[380px] aspect-square object-cover rounded-full">
+                        </div>
+                    </div>
+                    <div class="text-lg xl:text-xl text-center md:ml-24 md:text-left self-center">
+                        <p class="my-10 md:mt-0">
+                            Each of our sweets and pastries is lovingly handmade using the finest ingredients. Every treat is crafted with attention to detail, ensuring a perfect balance of flavor, texture, and presentation.
+                        </p>
+                        <p class="mb-10 md:mb-0 xl:mb-10">
+                            From delicate éclairs and flaky croissants to indulgent tarts and buttery cookies, our selection is designed to delight every palate. Our bakers combine traditional techniques with a touch of creativity to make every pastry a small masterpiece.
+                        </p>
+                        <p class="md:hidden xl:block">
+                            Every pastry is made fresh daily and presented beautifully, whether for casual treats or special occasions. Our commitment to quality ensures each bite is an experience to remember.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Special Events Tab -->
+            <div id="tab-content-2" class="tab-content hidden flex flex-col">
+                <p class="uppercase text-xl lg:text-2xl font-bold tracking-widest mb-16 text-center">
+                    Handcrafted sweets and cakes designed to delight every guest at your celebration.
+                </p>
+                <div class="flex flex-col items-center md:flex-row md:items-start">
+                    <div class="relative flex-shrink-0">
+                        <div class="absolute md:w-[130px] xl:w-[200px] 2xl:w-[260px] aspect-square bg-[#fff8ee] rounded-full top-[-10px] right-[-10px] lg:top-[-15px] lg:right-[-15px] 2xl:top-[-30px] 2xl:right-[-30px] -z-10 shadow-lg"></div>
+                        <div class="absolute md:w-[160px] xl:w-[250px] 2xl:w-[310px] aspect-square bg-[#51658f] rounded-full bottom-[-10px] right-[-10px] lg:bottom-[-15px] lg:right-[-15px] 2xl:bottom-[-30px] 2xl:right-[-30px] -z-10 shadow-lg"></div>
+
+                        <div class="border-4 border-white rounded-full overflow-hidden z-10 max-w-md md:max-w-none">
+                            <img src="img/special-cakes.jpg"
+                                alt="Wedding Cake"
+                                class="md:w-[200px] xl:w-[300px] 2xl:w-[380px] aspect-square object-cover rounded-full">
+                        </div>
+                    </div>
+                    <div class="text-lg xl:text-xl text-center md:ml-24 md:text-left self-center">
+                        <p class="my-10 md:mt-0">
+                            Our specially made cakes and desserts are crafted to make every celebration unforgettable. Using premium ingredients and artistic techniques, we design each creation to be both visually stunning and delicious.
+                        </p>
+                        <p class="mb-10 md:mb-0 xl:mb-10">
+                            From birthdays to weddings, we tailor each dessert to your theme and preferences. Every detail is thoughtfully considered to create a memorable centerpiece for your event.
+                        </p>
+                        <p class="md:hidden xl:block">
+                            Each cake and dessert is delivered with care, ensuring it arrives in perfect condition. We work closely with you to provide a seamless experience from design to presentation, making your special day truly extraordinary.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Our Products Section-->
+        <div class="bg-[#FFF8EE] text-[#51658f] mt-20 py-10 overflow-hidden flex flex-col items-center justify-center shadow-md">
+            <h2 class="uppercase text-2xl lg:text-3xl text-center font-bold tracking-widest">Our Products</h2>
+
+            <!-- Carousel -->
+            <div class="h-[370px] md:h-[400px] lg:h-[480px] xl:h-[550px] mt-[-60px] md:mt-[-30px] lg:mt-8 xl:mt-20 2xl:mt-24 container mx-auto">
+                <div class="carousel [perspective:600px] transform md:scale-[1.2] lg:scale-[1.65] xl:scale-[2.1] 2xl:scale-[2.5] origin-center">
+                    <div class="carousel-item shrink-0 cursor-[grab] active:cursor-[grabbing]">
+                        <div class="w-[200px] aspect-square rounded-full overflow-hidden mb-2">
+                            <img src="img/carousel/carousel-bread.jpg"
+                                alt="Dog" 
+                                class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-md text-center py-1">
+                            Bread
+                        </h3>
+                    </div>
+                    
+                    <div class="carousel-item shrink-0 cursor-[grab] active:cursor-[grabbing]">
+                        <div class="w-[200px] aspect-square rounded-full overflow-hidden mb-2">
+                            <img src="img/carousel/carousel-cakes.jpg"
+                                alt="Dog" 
+                                class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-md text-center py-1">
+                            Cakes
+                        </h3>
+                    </div>
+                    
+                    <div class="carousel-item shrink-0 cursor-[grab] active:cursor-[grabbing]">
+                        <div class="w-[200px] aspect-square rounded-full overflow-hidden mb-2">
+                            <img src="img/carousel/carousel-cookies.jpg"
+                                alt="Dog" 
+                                class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-md text-center py-1">
+                            Cookies &amp; Biscuits
+                        </h3>
+                    </div>
+                    
+                    <div class="carousel-item shrink-0 cursor-[grab] active:cursor-[grabbing]">
+                        <div class="w-[200px] aspect-square rounded-full overflow-hidden mb-2">
+                            <img src="img/carousel/carousel-desserts.jpg"
+                                alt="Dog" 
+                                class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-md text-center py-1">
+                            Desserts
+                        </h3>
+                    </div>
+                    
+                    <div class="carousel-item shrink-0 cursor-[grab] active:cursor-[grabbing]">
+                        <div class="w-[200px] aspect-square rounded-full overflow-hidden mb-2">
+                            <img src="img/carousel/carousel-pastries.jpg"
+                                alt="Dog" 
+                                class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-md text-center py-1">
+                            Pastries
+                        </h3>
+                    </div>
+
+                    <div class="carousel-item shrink-0 cursor-[grab] active:cursor-[grabbing]">
+                        <div class="w-[200px] aspect-square rounded-full overflow-hidden mb-2">
+                            <img src="img/carousel/carousel-tarts.jpg"
+                                alt="Dog" 
+                                class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-md text-center py-1">
+                            Pies &amp; Tarts
+                        </h3>
+                    </div>
+                    
+                    <div class="carousel-item shrink-0 cursor-[grab] active:cursor-[grabbing]">
+                        <div class="w-[200px] aspect-square rounded-full overflow-hidden mb-2">
+                            <img src="img/carousel/carousel-savory.jpg"
+                                alt="Dog" 
+                                class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-md text-center py-1">
+                            Savory Bakes
+                        </h3>
+                    </div>
+                    
+                    <div class="carousel-item shrink-0 cursor-[grab] active:cursor-[grabbing]">
+                        <div class="w-[200px] aspect-square rounded-full overflow-hidden mb-2">
+                            <img src="img/carousel/carousel-seasonal.jpg"
+                                alt="Dog" 
+                                class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-md text-center py-1">
+                            Seasonal Specials
+                        </h3>
+                    </div>
+
+                    <div class="carousel-item shrink-0 cursor-[grab] active:cursor-[grabbing]">
+                        <div class="w-[200px] aspect-square rounded-full overflow-hidden mb-2">
+                            <img src="img/carousel/carousel-event.jpg"
+                                alt="Dog" 
+                                class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-md text-center py-1">
+                            Special Events
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            <a href="/" class="bg-[#51658f] hover:bg-[#3c4b6f] text-white text-center text-md xl:text-lg 2xl:text-2xl py-4 rounded-full font-semibold z-10 tracking-wider uppercase pt-3 w-[200px] md:w-[300px]">
+                Find Out More
+            </a>
+        </div>
+
+        <!-- Reviews Section-->
+         <div class="container mx-auto flex flex-col items-center my-10 text-[#51658f] px-4">
+            <h2 class="uppercase text-2xl lg:text-3xl text-center font-bold tracking-widest mb-24">What our customers are saying</h2>
+            <div id="slider">
+                <div class="slide opacity-100 transition-opacity duration-700 ease-in-out">
+                    <div class="flex gap-8 mb-12 justify-center">
+                        <i class="fa-solid fa-quote-left"></i>
+                        <div>
+                            <p class="text-center mt-4 text-xl">
+                                I stopped in on a whim and ended up leaving with a box full of pastries. The croissants are buttery perfection, and the cinnamon rolls might just be the best I&apos;ve ever had. You can taste the love and craftsmanship in everything here.
+                            </p>
+                            <p class="uppercase text-xl font-semibold tracking-widest text-right mt-8">
+                                - Anna Davis
+                            </p>
+                        </div>
+                        <i class="fa-solid fa-quote-right"></i>
+                    </div>
+                </div>
+                <div class="slide opacity-0 hidden transition-opacity duration-700 ease-in-out">
+                    <div class="flex gap-8 mb-12 justify-center">
+                        <i class="fa-solid fa-quote-left"></i>
+                        <div>
+                            <p class="text-center mt-4 text-xl">
+                                This bakery is pure magic! The sourdough has the perfect crust, and the inside is soft and chewy. I tried one slice and had to take a whole loaf home. The atmosphere feels so cozy and welcoming - you can taste the passion behind every bake.
+                            </p>
+                            <p class="uppercase text-xl font-semibold tracking-widest text-right mt-8">
+                                - Sophie Clarke
+                            </p>
+                        </div>
+                        <i class="fa-solid fa-quote-right"></i>
+                    </div>
+                </div>
+                <div class="slide opacity-0 hidden transition-opacity duration-700 ease-in-out">
+                    <div class="flex gap-8 mb-12 justify-center">
+                        <i class="fa-solid fa-quote-left"></i>
+                        <div>
+                            <p class="text-center mt-4 text-xl">
+                                The moment you step inside, the scent of freshly baked bread hits you, and you just know you&apos;re in the right place. Their tarts are crisp and buttery, filled with the sweetest seasonal fruit. It&apos;s become my go-to stop every weekend morning.
+                            </p>
+                            <p class="uppercase text-xl font-semibold tracking-widest text-right mt-8">
+                                - James Porter
+                            </p>
+                        </div>
+                        <i class="fa-solid fa-quote-right"></i>
+                    </div>
+                </div>
+                <div class="slide opacity-0 hidden transition-opacity duration-700 ease-in-out">
+                    <div class="flex gap-8 mb-12 justify-center">
+                        <i class="fa-solid fa-quote-left"></i>
+                        <div>
+                            <p class="text-center mt-4 text-xl">
+                                I ordered a birthday cake here, and it was absolutely stunning - moist, flavorful, and beautifully decorated. Everyone at the party asked where it came from! They&apos;ve truly mastered the balance of flavor, texture, and presentation
+                            </p>
+                            <p class="uppercase text-xl font-semibold tracking-widest text-right mt-8">
+                                - Ethan Miller
+                            </p>
+                        </div>
+                        <i class="fa-solid fa-quote-right"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- Dots navigation -->
+            <div class="flex justify-center mb-24 space-x-3">
+                <button type="button" title="Go to slide 1" class="dot w-4 h-4 rounded-full bg-[#51658f] opacity-100 focus:bg-[#51658f] hover:opacity-100"></button>
+                <button type="button" title="Go to slide 2"class="dot w-4 h-4 rounded-full bg-[#51658f] opacity-30 focus:bg-[#51658f] hover:opacity-60"></button>
+                <button type="button" title="Go to slide 3" class="dot w-4 h-4 rounded-full bg-[#51658f] opacity-30 focus:bg-[#51658f] hover:opacity-60"></button>
+                <button type="button" title="Go to slide 4" class="dot w-4 h-4 rounded-full bg-[#51658f] opacity-30 focus:bg-[#51658f] hover:opacity-60"></button>
+            </div>
+
+            <p class="uppercase text-xl text-center font-bold tracking-widest mb-8">
+                Proudly baking for your party, your event, and your breakfast 
+            </p>
+            <a href="/" class="bg-orange-500 hover:bg-orange-600 text-white text-center text-md xl:text-lg 2xl:text-2xl py-4 rounded-full font-semibold z-10 tracking-wider uppercase pt-3 w-[200px] md:w-[300px]">
+                Order Now
+            </a>
+        </div>
+
+        <!-- Footer Section -->
+        <footer class="bg-[#51658f] text-white py-10">
+            <div class="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-8">
+                <!-- Address Section -->
+                <div class="flex flex-col items-center md:items-start">
+                    <h3 class="text-2xl font-bold mb-6">ADDRESS</h3>
+                    <p class="mb-2">107 Gloucester Street</p>
+                    <p class="mb-2">Norwich, Norfolk</p>
+                    <p class="mb-4">NR2 2DY</p>
+                    <p class="mb-1">01603 123 987</p>
+                    <p>info@bakersdozen.co.uk</p>
+                </div>
+
+                <!-- Opening Times Section -->
+                <div class="flex flex-col items-center text-center">
+                    <h3 class="text-2xl font-bold mb-6">OPENING TIMES</h3>
+                    <p class="mb-2">Monday- Friday 8AM - 4PM</p>
+                    <p class="mb-2">Saturday 8AM - 3PM</p>
+                    <p>Closed Sunday</p>
+                </div>
+
+                <!-- Sections Links -->
+                <div class="flex flex-col items-center md:items-end">
+                    <h3 class="text-2xl font-bold mb-6">SECTIONS</h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="/" class="hover:text-gray-300 flex items-center gap-2">
+                                <i class="fa-solid fa-angle-right text-sm"></i>About
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/" class="hover:text-gray-300 flex items-center gap-2">
+                                <i class="fa-solid fa-angle-right text-sm"></i>Products
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/" class="hover:text-gray-300 flex items-center gap-2">
+                                <i class="fa-solid fa-angle-right text-sm"></i>Testimonials
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/" class="hover:text-gray-300 flex items-center gap-2">
+                                <i class="fa-solid fa-angle-right text-sm"></i>Order
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/" class="hover:text-gray-300 flex items-center gap-2">
+                                <i class="fa-solid fa-angle-right text-sm"></i>Privacy Policy
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container mx-auto px- pt-12 text-center tracking-wider">
+                <p class="text-sm">Copyright &copy; Baker's Dozen. All Rights Reserved 2025</p>
+            </div>
+        </footer>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
