@@ -92,5 +92,33 @@ dots.forEach(function (dot, i) {
 
 showSlide(0); // Auto-rotate slides
 
-setInterval(nextSlide, 10000);
+setInterval(nextSlide, 10000); // Order cart sidebar 
+
+var cart = document.getElementById("cart");
+var mainContent = document.getElementById("page-content");
+var overlay = document.getElementById("overlay");
+var checkout = document.getElementById("cart-checkout");
+
+function openCart() {
+  cart.classList.add("open");
+  mainContent.classList.add("-translate-x-[500px]", "brightness-50");
+  overlay.classList.remove("hidden");
+  overlay.classList.add("opacity-100");
+  setTimeout(function () {
+    checkout.classList.add("z-1000");
+    checkout.classList.remove("-z-10");
+  }, 500);
+}
+
+function closeCart() {
+  cart.classList.remove("open");
+  mainContent.classList.remove("-translate-x-[500px]", "brightness-50");
+  overlay.classList.remove("opacity-100");
+  overlay.classList.add("hidden");
+  checkout.classList.remove("z-1000");
+  checkout.classList.add("-z-10");
+} // Close cart when clickin
+
+
+overlay.addEventListener("click", closeCart);
 //# sourceMappingURL=main.dev.js.map
