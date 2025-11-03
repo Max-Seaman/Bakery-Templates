@@ -1,4 +1,4 @@
-// show the tab content based on the clicked tab
+// show the tab content based on the clicked tab (index.html)
 function showTab(index) {
     const contents = document.querySelectorAll('.tab-content');
     contents.forEach((el, i) => {
@@ -6,7 +6,9 @@ function showTab(index) {
     });
 }
 
-// tab underline on hover effect
+
+
+// tab underline on hover effect (all pages with header)
 document.querySelectorAll('.tab').forEach(tab => {
     // Create the animated border element
     const border = document.createElement('div');
@@ -34,12 +36,16 @@ document.querySelectorAll('.tab').forEach(tab => {
     });
 });
 
-// Our products carousel 
+
+
+// Our products carousel (index.html)
 $(document).ready(function() {
 	$('.carousel').carousel();
 });
 
-//reviews carousel (tried using slick but couldnt get it wokring for some reason. AI suggested it might conflict with tailwind so just made my own version)
+
+
+//reviews carousel (tried using slick but couldnt get it wokring for some reason. AI suggested it might conflict with tailwind so just made my own version) (index.html)
 const slides = document.querySelectorAll("#slider .slide");
 const dots = document.querySelectorAll(".dot");
 let current = 0;
@@ -110,6 +116,7 @@ showSlide(0);
 setInterval(nextSlide, 10000);
 
 
+
 // Order cart sidebar 
 const cart = document.getElementById("cart");
 const mainContent = document.getElementById("page-content");
@@ -139,3 +146,47 @@ function closeCart() {
 // Close cart when clickin
 overlay.addEventListener("click", closeCart);
 
+
+
+//Ensuring cards have equal height even after some have text wrapping to multiple lines (products.html)
+function setEqualCardHeights() {
+    const cards = document.querySelectorAll('.product-card');
+    let maxHeight = 0;
+
+    // First, reset heights to auto to get natural heights
+    cards.forEach(card => {
+        card.style.height = 'auto';
+    });
+
+    // Find the maximum height
+    cards.forEach(card => {
+        const cardHeight = card.offsetHeight;
+        if (cardHeight > maxHeight) {
+            maxHeight = cardHeight;
+        }
+    });
+
+    // Set all cards to the maximum height
+    cards.forEach(card => {
+        card.style.height = `${maxHeight}px`;
+    });
+}
+
+// Call the function on page load and window resize
+window.addEventListener('load', setEqualCardHeights);
+window.addEventListener('resize', setEqualCardHeights);
+
+
+
+// Open filters popup (products.html)
+function openFilters() {
+    const filters = document.querySelector(".filters");
+    filters.classList.remove("hidden");
+    filters.classList.add("flex");
+}
+
+function closeFilters() {
+    const filters = document.querySelector(".filters");
+    filters.classList.remove("flex");
+    filters.classList.add("hidden");
+}

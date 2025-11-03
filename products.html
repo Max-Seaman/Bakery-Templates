@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home Page Template</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Birthstone&display=swap');
+        </style>
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+
+     <body>
+        <div id="page-content" class="transition-all duration-500 ease-in-out z-2 flex flex-col min-h-screen">
+            <header class="bg-[#51658f] text-white">
+                <div class="container mx-auto px-4 py-6 flex items-center justify-between">
+                    <!-- Logo -->
+                    <a href="/" class="flex items-center">
+                        <h1 class="text-6xl lg:text-7xl md:pb-1 font-[Birthstone]">Baker's Dozen</h1>
+                    </a>
+
+                    <!-- Nav -->
+                    <div class="header flex items-center space-x-8 uppercase text-md lg:text-lg font-semibold justify-center md:pt-1">
+                        <!-- Desktop Links -->
+                        <a href="/" class="tab hidden md:inline">About</a>
+                        <a href="/" class="tab hidden md:inline">Products</a>
+                        <a href="/" class="tab hidden md:inline">Testimonials</a>
+                        <a href="/" class="tab hidden md:inline">Order</a>
+
+                        <!-- Mobile Toggle -->
+                        <i id="menu-toggle" class="fa-solid fa-angle-down md:hidden cursor-pointer transition-transform duration-300"></i>
+
+                        <div class="flex gap-3">
+                            <div class="w-[50px] aspect-square rounded-full bg-[#3c4b6f] flex items-center justify-center cursor-pointer hover:bg-[#364464]">
+                                <i class="fa-solid fa-phone-flip text-orange-400 text-2xl"></i>
+                            </div>
+                            <div id="cart" class="w-[50px] aspect-square rounded-full bg-orange-400 flex items-center justify-center cursor-pointer hover:bg-orange-500" onclick="openCart()">
+                                <i class="fa-solid fa-basket-shopping text-[#3c4b6f] text-2xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="w-full bg-white flex-grow">
+                <div class="flex flex-col w-full container mx-auto justify-center text-center gap-6 sm:gap-6 px-4 py-6">
+                    <!-- Search Bar and Filters-->
+                     <div class="flex w-full gap-4 justify-between">
+                        <input type="text" placeholder="Search..." class="w-full py-2 px-3 rounded-lg focus:outline-none shadow-lg bg-[#51658f] text-white placeholder:text-white"/>
+                        <button type="button" class="flex items-center justify-center bg-orange-400 hover:bg-orange-500 text-[#3c4b6f] py-2 px-4 rounded-lg" onclick="openFilters()">
+                            <i class="fa-solid fa-sliders mt-[2px] pr-1"></i>Filters
+                        </button>
+                    </div>
+
+                    <!-- Product List -->
+                    <div class="flex-1 overflow-y-auto">
+                        <div class="grid gap-6 mt-2 mb-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/bread.jpg"
+                                        alt="ordered product - bread"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Sourdough Loaf</h3>
+                                    <p>$3.29</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/bread.jpg"
+                                        alt="ordered product - bread"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Tiger Loaf</h3>
+                                    <p>$2.79</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/cupcakes.jpg"
+                                        alt="ordered product - cake"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Cate Cupcake</h3>
+                                    <p>$1.89</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/special-cakes.jpg"
+                                        alt="ordered product - special"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Custom Cake</h3>
+                                    <p>$449.29</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Section -->
+            <footer class="bg-[#51658f] text-white py-10">
+                <div class="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-8">
+                    <!-- Address Section -->
+                    <div class="flex flex-col items-center md:items-start">
+                        <h3 class="text-2xl font-bold mb-6">ADDRESS</h3>
+                        <p class="mb-2">107 Gloucester Street</p>
+                        <p class="mb-2">Norwich, Norfolk</p>
+                        <p class="mb-4">NR2 2DY</p>
+                        <p class="mb-1">01603 123 987</p>
+                        <p>info@bakersdozen.co.uk</p>
+                    </div>
+
+                    <!-- Opening Times Section -->
+                    <div class="flex flex-col items-center text-center">
+                        <h3 class="text-2xl font-bold mb-6">OPENING TIMES</h3>
+                        <p class="mb-2">Monday- Friday 8AM - 4PM</p>
+                        <p class="mb-2">Saturday 8AM - 3PM</p>
+                        <p>Closed Sunday</p>
+                    </div>
+
+                    <!-- Sections Links -->
+                    <div class="flex flex-col items-center md:items-end">
+                        <h3 class="text-2xl font-bold mb-6">SECTIONS</h3>
+                        <ul class="space-y-2">
+                            <li>
+                                <a href="/" class="hover:text-gray-300 flex items-center gap-2">
+                                    <i class="fa-solid fa-angle-right text-sm"></i>About
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/" class="hover:text-gray-300 flex items-center gap-2">
+                                    <i class="fa-solid fa-angle-right text-sm"></i>Products
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/" class="hover:text-gray-300 flex items-center gap-2">
+                                    <i class="fa-solid fa-angle-right text-sm"></i>Testimonials
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/" class="hover:text-gray-300 flex items-center gap-2">
+                                    <i class="fa-solid fa-angle-right text-sm"></i>Order
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/" class="hover:text-gray-300 flex items-center gap-2">
+                                    <i class="fa-solid fa-angle-right text-sm"></i>Privacy Policy
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container mx-auto px- pt-12 text-center tracking-wider">
+                    <p class="text-sm">Copyright &copy; Baker's Dozen. All Rights Reserved 2025</p>
+                </div>
+            </footer>
+
+            <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-[9998] transition-opacity duration-500 cursor-pointer"></div>
+        </div>
+
+        <div id="cart-checkout" class="fixed top-0 right-0 w-[300px] sm:w-[500px] h-full bg-[#3c4b6f] -z-10">
+            <div class="flex flex-col h-full p-10 gap-8">
+                <div class="w-16 aspect-square rounded-lg bg-[#fff8ee] hover:bg-[#e6dfd6] flex items-center justify-center cursor-pointer" onclick="closeCart()">
+                    <i class="fa-solid fa-xmark text-[#51658f] text-3xl"></i>
+                </div>
+
+                <div class="rounded-lg bg-[#fff8ee] text-[#51658f] flex-grow overflow-y-auto flex flex-col p-5">
+                    <h2 class="uppercase text-2xl lg:text-3xl text-center font-bold tracking-widest pb-8">Checkout</h2>
+                    <div id="items" class="flex flex-col gap-5 pb-5">
+                        <div class="p-5 bg-[#e6dfd6] rounded-lg flex flex-col sm:flex-row w-100 gap-8">
+                            <div class="rounded-lg overflow-hidden sm:w-32 aspect-square">
+                                <img src="img/bread.jpg"
+                                    alt="ordered product - bread"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <div class="flex flex-col justify-between w-full gap-1">
+                                <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Sourdough Loaf</h3>
+                                <p>$3.29</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center justify-between text-lg rounded-lg overflow-hidden">
+                                        <p class="pr-2">
+                                            <i class="fa-solid fa-minus "></i>
+                                        </p>
+                                        <p class="flex-2 font-semibold">
+                                            1
+                                        </p>
+                                        <div class="pl-2">
+                                            <i class="fa-solid fa-plus "></i>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-trash mt-[2px]"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-5 bg-[#e6dfd6] rounded-lg flex flex-col sm:flex-row w-100 gap-8">
+                            <div class="rounded-lg overflow-hidden sm:w-32 aspect-square">
+                                <img src="img/bread.jpg"
+                                    alt="ordered product - bread"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <div class="flex flex-col justify-between w-full gap-1">
+                                <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Tiger Loaf</h3>
+                                <p>$2.79</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center justify-between text-lg rounded-lg overflow-hidden">
+                                        <p class="pr-2">
+                                            <i class="fa-solid fa-minus"></i>
+                                        </p>
+                                        <p class="flex-2 font-semibold">
+                                            1
+                                        </p>
+                                        <p class="pl-2">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </p>
+                                    </div>
+                                    <i class="fa-solid fa-trash mt-[2px]"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-5 bg-[#e6dfd6] rounded-lg flex flex-col sm:flex-row w-100 gap-8">
+                            <div class="rounded-lg overflow-hidden sm:w-32 aspect-square">
+                                <img src="img/cupcakes.jpg"
+                                    alt="ordered product - cake"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <div class="flex flex-col justify-between w-full gap-1">
+                                <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Chocolate Cupcake</h3>
+                                <p>$1.89</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center justify-between text-lg rounded-lg overflow-hidden">
+                                        <p class="pr-2">
+                                            <i class="fa-solid fa-minus"></i>
+                                        </p>
+                                        <p class="flex-2 font-semibold">
+                                            1
+                                        </p>
+                                        <p class="pl-2">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </p>
+                                    </div>
+                                    <i class="fa-solid fa-trash mt-[2px]"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-5 bg-[#e6dfd6] rounded-lg flex flex-col sm:flex-row w-100 gap-8">
+                            <div class="rounded-lg overflow-hidden sm:w-32 aspect-square">
+                                <img src="img/special-cakes.jpg"
+                                    alt="ordered product - special"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <div class="flex flex-col justify-between w-full gap-1">
+                                <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Custom Cake</h3>
+                                <p>$449.29</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center justify-between text-lg rounded-lg overflow-hidden">
+                                        <p class="pr-2">
+                                            <i class="fa-solid fa-minus"></i>
+                                        </p>
+                                        <p class="flex-2 font-semibold">
+                                            1
+                                        </p>
+                                        <p class="pl-2">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </p>
+                                    </div>
+                                    <i class="fa-solid fa-trash mt-[2px]"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="payments" class="mt-auto flex flex-col gap-5">
+                        <button type="button" title="checkout" class="flex items-center justify-center gap-2 w-full rounded-lg p-3 text-2xl bg-[#51658f] hover:bg-[#364464] text-[#fff8ee] cursor-pointer">
+                            <i class="fa-solid fa-basket-shopping text-lg mt-[2px]"></i>
+                            Checkout
+                        </button>
+                        <button type="button" title="checkout-applepay" class="flex items-center justify-center gap-3 w-full rounded-lg p-3 text-2xl bg-black hover:bg-[#333] text-[#fff8ee] cursor-pointer">
+                            <i class="fa-brands fa-apple mt-[3px]"></i>
+                            Apple Pay
+                        </button>
+                        <button type="button" title="checkout-paypal" class="flex items-center justify-center gap-2 w-full rounded-lg p-3 text-2xl bg-gradient-to-r from-[#003087] to-[#009cde] hover:from-[#2649b2] hover:to-[#33b5e6] text-[#fff8ee] cursor-pointer">
+                            <i class="fa-brands fa-paypal mt-2"></i>
+                            PayPal
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="filters hidden fixed inset-0 bg-black bg-opacity-50 z-[9997] items-center justify-center">
+            <div class="bg-[#fff8ee] rounded-lg p-8 w-11/12 max-w-md text-[#51658f] flex flex-col gap-6">
+                <i class="fa-solid fa-xmark text-3xl text-right cursor-pointer" onclick="closeFilters()"></i>
+                <h2 class="uppercase lg:text-2xl text-center font-bold tracking-widest">Price Range</h2>
+                
+            </div>
+        </div>
+        <script src="main.js"></script>
+    </body>
+</html>

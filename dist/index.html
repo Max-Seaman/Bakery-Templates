@@ -17,7 +17,7 @@
     </head>
 
     <body>
-        <div id="page-content" class="transition-all duration-500 ease-in-out z-2">
+        <div id="page-content" class="transition-all duration-500 ease-in-out z-2 flex flex-col min-h-screen">
             <header class="bg-[#51658f] text-white">
                 <div class="container mx-auto px-4 py-6 flex items-center justify-between">
                     <!-- Logo -->
@@ -29,7 +29,7 @@
                     <div class="header flex items-center space-x-8 uppercase text-md lg:text-lg font-semibold justify-center md:pt-1">
                         <!-- Desktop Links -->
                         <a href="/" class="tab hidden md:inline">About</a>
-                        <a href="/" class="tab hidden md:inline">Products</a>
+                        <a href="products.html" class="tab hidden md:inline">Products</a>
                         <a href="/" class="tab hidden md:inline">Testimonials</a>
                         <a href="/" class="tab hidden md:inline">Order</a>
 
@@ -455,9 +455,9 @@
                     <i class="fa-solid fa-xmark text-[#51658f] text-3xl"></i>
                 </div>
 
-                <div class="rounded-lg bg-[#fff8ee] text-[#51658f] flex-grow overflow-y-auto flex flex-col p-5">
+                <div class="rounded-lg bg-[#fff8ee] text-[#51658f] flex-grow flex flex-col p-5 min-h-0">
                     <h2 class="uppercase text-2xl lg:text-3xl text-center font-bold tracking-widest pb-8">Checkout</h2>
-                    <div id="items" class="flex flex-col gap-5 pb-5">
+                    <div id="items" class="flex flex-col gap-5 pb-5 overflow-y-auto flex-grow">
                         <div class="p-5 bg-[#e6dfd6] rounded-lg flex flex-col sm:flex-row w-100 gap-8">
                             <div class="rounded-lg overflow-hidden sm:w-32 aspect-square">
                                 <img src="img/bread.jpg"
@@ -559,7 +559,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="payments" class="mt-auto flex flex-col gap-5">
+                    <div id="payments" class="mt-auto flex flex-col gap-5 pt-8">
                         <button type="button" title="checkout" class="flex items-center justify-center gap-2 w-full rounded-lg p-3 text-2xl bg-[#51658f] hover:bg-[#364464] text-[#fff8ee] cursor-pointer">
                             <i class="fa-solid fa-basket-shopping text-lg mt-[2px]"></i>
                             Checkout
