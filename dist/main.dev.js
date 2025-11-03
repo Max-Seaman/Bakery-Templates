@@ -101,7 +101,7 @@ var checkout = document.getElementById("cart-checkout");
 
 function openCart() {
   cart.classList.add("open");
-  mainContent.classList.add("-translate-x-[500px]", "brightness-50");
+  mainContent.classList.add("-translate-x-[300px]", "sm:-translate-x-[500px]", "brightness-50");
   overlay.classList.remove("hidden");
   overlay.classList.add("opacity-100");
   setTimeout(function () {
@@ -112,7 +112,7 @@ function openCart() {
 
 function closeCart() {
   cart.classList.remove("open");
-  mainContent.classList.remove("-translate-x-[500px]", "brightness-50");
+  mainContent.classList.remove("-translate-x-[300px]", "sm:-translate-x-[500px]", "brightness-50");
   overlay.classList.remove("opacity-100");
   overlay.classList.add("hidden");
   checkout.classList.remove("z-1000");
