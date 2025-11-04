@@ -8,25 +8,45 @@
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Birthstone&display=swap');
         </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            /* Neutralize Materialize's input focus and borders */
+            input[type=text],
+            input[type=search],
+            input:not([type]) {
+                border: none !important;
+                box-shadow: none !important;
+                background-image: none !important;
+                transition: none !important;
+            }
+
+            input[type=text]:focus:not([readonly]),
+            input[type=search]:focus:not([readonly]),
+            input:not([type]):focus:not([readonly]) {
+                border: none !important;
+                box-shadow: none !important;
+                background-image: none !important;
+            }
+        </style>
     </head>
 
      <body>
         <div id="page-content" class="transition-all duration-500 ease-in-out z-2 flex flex-col min-h-screen">
-            <header class="bg-[#51658f] text-white">
+            <header class="bg-[#51658f] text-[#fff8ee]">
                 <div class="container mx-auto px-4 py-6 flex items-center justify-between">
                     <!-- Logo -->
                     <a href="/" class="flex items-center">
-                        <h1 class="text-6xl lg:text-7xl md:pb-1 font-[Birthstone]">Baker's Dozen</h1>
+                        <h1 class="text-5xl lg:text-7xl md:pb-1 font-[Birthstone]">Baker's Dozen</h1>
                     </a>
 
                     <!-- Nav -->
                     <div class="header flex items-center space-x-8 uppercase text-md lg:text-lg font-semibold justify-center md:pt-1">
                         <!-- Desktop Links -->
                         <a href="/" class="tab hidden md:inline">About</a>
-                        <a href="/" class="tab hidden md:inline">Products</a>
+                        <a href="products.html" class="tab hidden md:inline">Products</a>
                         <a href="/" class="tab hidden md:inline">Testimonials</a>
                         <a href="/" class="tab hidden md:inline">Order</a>
 
@@ -45,28 +65,42 @@
                 </div>
             </header>
 
+            <div class="relative w-full h-[50vh] bg-[url('img/store.jpg')] bg-cover bg-center">
+                <div class="absolute inset-0 bg-black/65"></div> <!-- dark overlay -->
+                
+                <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
+                    <h2 class="w-full text-8xl md:text-9xl font-bold font-[Birthstone] mb-4">
+                        Our Products
+                    </h2>
+                    <p class="text-lg md:text-xl lg:text-2xl tracking-widest">
+                        Freshly baked goods made with love
+                    </p>
+                </div>
+            </div>
+
             <div class="w-full bg-white flex-grow">
                 <div class="flex flex-col w-full container mx-auto justify-center text-center gap-6 sm:gap-6 px-4 py-6">
                     <!-- Search Bar and Filters-->
                      <div class="flex w-full gap-4 justify-between">
-                        <input type="text" placeholder="Search..." class="w-full py-2 px-3 rounded-lg focus:outline-none shadow-lg bg-[#51658f] text-white placeholder:text-white"/>
-                        <button type="button" class="flex items-center justify-center bg-orange-400 hover:bg-orange-500 text-[#3c4b6f] py-2 px-4 rounded-lg" onclick="openFilters()">
+                        <input type="text" placeholder="Search..." class="!w-full !px-4 !rounded-lg !shadow-lg !bg-[#51658f] !text-[#fff8ee] [&::placeholder]:!text-[#fff8ee] !mb-0"/>
+                        <div class="flex items-center justify-center bg-orange-400 hover:bg-orange-500 !active:bg-orange-500 text-[#3c4b6f] py-2 px-4 rounded-lg cursor-pointer" onclick="openFilters()">
                             <i class="fa-solid fa-sliders mt-[2px] pr-1"></i>Filters
-                        </button>
+                        </div>
                     </div>
 
                     <!-- Product List -->
                     <div class="flex-1 overflow-y-auto">
                         <div class="grid gap-6 mt-2 mb-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4 text-[#51658f]">
+                                <!-- When creating this part randomise the layout so not separated into categories already -->
                                 <div class="rounded-lg overflow-hidden w-64 aspect-square">
-                                    <img src="img/bread.jpg"
+                                    <img src="img/products/products-bread.jpg"
                                         alt="ordered product - bread"
                                         class="w-full h-full object-cover">
                                 </div>
                                 <div class="flex flex-col justify-between w-full gap-3">
                                     <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Sourdough Loaf</h3>
-                                    <p>$3.29</p>
+                                    <p>$4.50</p>
                                     <p>In Stock</p>
                                     <div class="flex items-center justify-center">
                                         <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
@@ -77,13 +111,13 @@
                             </div>
                             <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
                                 <div class="rounded-lg overflow-hidden w-64 aspect-square">
-                                    <img src="img/bread.jpg"
+                                    <img src="img/products/products-bread.jpg"
                                         alt="ordered product - bread"
                                         class="w-full h-full object-cover">
                                 </div>
                                 <div class="flex flex-col justify-between w-full gap-3">
-                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Tiger Loaf</h3>
-                                    <p>$2.79</p>
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Mutligrain Sandwich Bread</h3>
+                                    <p>$4.25</p>
                                     <p>In Stock</p>
                                     <div class="flex items-center justify-center">
                                         <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
@@ -94,13 +128,13 @@
                             </div>
                             <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
                                 <div class="rounded-lg overflow-hidden w-64 aspect-square">
-                                    <img src="img/cupcakes.jpg"
-                                        alt="ordered product - cake"
+                                    <img src="img/products/products-bread.jpg"
+                                        alt="ordered product - bread"
                                         class="w-full h-full object-cover">
                                 </div>
                                 <div class="flex flex-col justify-between w-full gap-3">
-                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Cate Cupcake</h3>
-                                    <p>$1.89</p>
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">French Baguette</h3>
+                                    <p>$3.50</p>
                                     <p>In Stock</p>
                                     <div class="flex items-center justify-center">
                                         <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
@@ -111,13 +145,13 @@
                             </div>
                             <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
                                 <div class="rounded-lg overflow-hidden w-64 aspect-square">
-                                    <img src="img/special-cakes.jpg"
-                                        alt="ordered product - special"
+                                    <img src="img/products/products-bread.jpg"
+                                        alt="ordered product - bread"
                                         class="w-full h-full object-cover">
                                 </div>
                                 <div class="flex flex-col justify-between w-full gap-3">
-                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Custom Cake</h3>
-                                    <p>$449.29</p>
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Brioche Loaf</h3>
+                                    <p>$5.00</p>
                                     <p>In Stock</p>
                                     <div class="flex items-center justify-center">
                                         <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
@@ -126,13 +160,1153 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-bread.jpg"
+                                        alt="ordered product - bread"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Whole Wheat Bread</h3>
+                                    <p>$3.75</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-bread.jpg"
+                                        alt="ordered product - bread"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Rustic Rye</h3>
+                                    <p>$4.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-bread.jpg"
+                                        alt="ordered product - bread"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Ciabatta</h3>
+                                    <p>$3.75</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-bread.jpg"
+                                        alt="ordered product - bread"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Focaccia with Rosemary</h3>
+                                    <p>$4.25</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-bread.jpg"
+                                        alt="ordered product - bread"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Pretzel Roll</h3>
+                                    <p>$2.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-bread.jpg"
+                                        alt="ordered product - bread"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Seeded Dinner Roll</h3>
+                                    <p>$1.75</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-bread.jpg"
+                                        alt="ordered product - bread"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Bagels (Assorted, 6-Pack)</h3>
+                                    <p>$4.25</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-bread.jpg"
+                                        alt="ordered product - bread"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Honey Oat Bread</h3>
+                                    <p>$4.25</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-cakes.jpg"
+                                        alt="ordered product - cakes"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Classic Vanilla Sponge Cake</h3>
+                                    <p>$20.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-cakes.jpg"
+                                        alt="ordered product - cakes"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Chocolate Fudge Cake</h3>
+                                    <p>$22.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-cakes.jpg"
+                                        alt="ordered product - cakes"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Red Velvet Cake</h3>
+                                    <p>$24.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-cakes.jpg"
+                                        alt="ordered product - cakes"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Lemon Drizzle Cake</h3>
+                                    <p>$18.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-cakes.jpg"
+                                        alt="ordered product - cakes"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Carrot Cake with Cream Cheese Frosting</h3>
+                                    <p>$22.50</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-cakes.jpg"
+                                        alt="ordered product - cakes"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Black Forest Gateau</h3>
+                                    <p>$25.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-cakes.jpg"
+                                        alt="ordered product - cakes"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Cheesecake (New York Style)</h3>
+                                    <p>$26.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-cakes.jpg"
+                                        alt="ordered product - cakes"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Stawberry Shortcake</h3>
+                                    <p>$23.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-cakes.jpg"
+                                        alt="ordered product - cakes"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Tiramisu Layer Cake</h3>
+                                    <p>$24.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-cookies.jpg"
+                                        alt="ordered product - cookies"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Chocolate Chip Cookies (per dozen)</h3>
+                                    <p>$8.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-cookies.jpg"
+                                        alt="ordered product - cookies"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Oatmeal Rasin Cookies (per dozen)</h3>
+                                    <p>$7.50</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-cookies.jpg"
+                                        alt="ordered product - cookies"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Peanut Butter Cookies (per dozen)</h3>
+                                    <p>$8.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-cookies.jpg"
+                                        alt="ordered product - cookies"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Shortbread (6 pieces)</h3>
+                                    <p>$6.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-cookies.jpg"
+                                        alt="ordered product - cookies"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Double Chocolate Chunk Cookies (per dozen)</h3>
+                                    <p>$9.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-cookies.jpg"
+                                        alt="ordered product - cookies"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Butter Biscuits (6 pieces)</h3>
+                                    <p>$6.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-cookies.jpg"
+                                        alt="ordered product - cookies"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Almond Biscotti (per pack)</h3>
+                                    <p>$7.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-cookies.jpg"
+                                        alt="ordered product - cookies"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Coconut Macaroons (per pack)</h3>
+                                    <p>$6.50</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-cookies.jpg"
+                                        alt="ordered product - cookies"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Ginger Snap Cookies (per dozen)</h3>
+                                    <p>$7.50</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-cookies.jpg"
+                                        alt="ordered product - cookies"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">White Chocolate &amp; Raspberry Cookies (6 pieces)</h3>
+                                    <p>$8.50</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-cookies.jpg"
+                                        alt="ordered product - cookies"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Lemon Butter Biscuits (6 pieces)</h3>
+                                    <p>$6.50</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-cookies.jpg"
+                                        alt="ordered product - cookies"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Digestive Biscuits (6 pieces)</h3>
+                                    <p>$5.50</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-desserts.jpg"
+                                        alt="ordered product - desserts"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Crème Brûlée</h3>
+                                    <p>$6.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-desserts.jpg"
+                                        alt="ordered product - desserts"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Chocolate Mousse</h3>
+                                    <p>$5.50</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-desserts.jpg"
+                                        alt="ordered product - desserts"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Panna Cotta with Berry Coulis</h3>
+                                    <p>$6.50</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-desserts.jpg"
+                                        alt="ordered product - desserts"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Bread Pudding</h3>
+                                    <p>$5.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-desserts.jpg"
+                                        alt="ordered product - desserts"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Sticky Toffee Pudding</h3>
+                                    <p>$6.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-desserts.jpg"
+                                        alt="ordered product - desserts"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Trifle Cup</h3>
+                                    <p>$5.50</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-desserts.jpg"
+                                        alt="ordered product - desserts"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Fruit Parfait</h3>
+                                    <p>$5.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-desserts.jpg"
+                                        alt="ordered product - desserts"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Banoffee Pudding</h3>
+                                    <p>$6.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-pastries.jpg"
+                                        alt="ordered product - pastries"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Butter Croissant</h3>
+                                    <p>$3.25</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-pastries.jpg"
+                                        alt="ordered product - pastries"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Chocolate Croissant</h3>
+                                    <p>$3.75</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-pastries.jpg"
+                                        alt="ordered product - pastries"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Almond Croissant</h3>
+                                    <p>$4.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-pastries.jpg"
+                                        alt="ordered product - pastries"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Apple Turnover</h3>
+                                    <p>$3.50</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-pastries.jpg"
+                                        alt="ordered product - pastries"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Cinnamon Roll</h3>
+                                    <p>$3.75</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-pastries.jpg"
+                                        alt="ordered product - pastries"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Pain au Raisin</h3>
+                                    <p>$3.50</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-pastries.jpg"
+                                        alt="ordered product - pastries"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Cream Horn</h3>
+                                    <p>$3.75</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-pastries.jpg"
+                                        alt="ordered product - pastries"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Danish with Custard</h3>
+                                    <p>$3.50</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-pastries.jpg"
+                                        alt="ordered product - pastries"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Cherry Danish</h3>
+                                    <p>$3.75</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-pastries.jpg"
+                                        alt="ordered product - pastries"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Puff Pastry Twists</h3>
+                                    <p>$2.75</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-tarts.jpg"
+                                        alt="ordered product - pies & tarts"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Apple Pie (slice)</h3>
+                                    <p>$4.50</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-tarts.jpg"
+                                        alt="ordered product - pies & tarts"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Lemon Meringue Tart</h3>
+                                    <p>$4.75</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-tarts.jpg"
+                                        alt="ordered product - pies & tarts"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Chocolate Tart</h3>
+                                    <p>$5.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-tarts.jpg"
+                                        alt="ordered product - pies & tarts"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Pecan Pie (slice)</h3>
+                                    <p>$4.75</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-tarts.jpg"
+                                        alt="ordered product - pies & tarts"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Fruit Tart</h3>
+                                    <p>$5.25</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-tarts.jpg"
+                                        alt="ordered product - pies & tarts"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Custard Tart</h3>
+                                    <p>$4.50</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-savory.jpg"
+                                        alt="ordered product - savory bakes"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Cheese &amp; Onion Roll</h3>
+                                    <p>$3.50</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-savory.jpg"
+                                        alt="ordered product - savory bakes"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Spinach &amp; Feta Puff</h3>
+                                    <p>$3.75</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-savory.jpg"
+                                        alt="ordered product - savory bakes"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Ham &amp; Cheese Croissant</h3>
+                                    <p>$4.25</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-savory.jpg"
+                                        alt="ordered product - savory bakes"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Sausage Roll</h3>
+                                    <p>$3.75</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-savory.jpg"
+                                        alt="ordered product - savory bakes"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Vegetable Puff</h3>
+                                    <p>$3.50</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-seasonal.jpg"
+                                        alt="ordered product - seasonal specials"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Pumpkin Pie (Autumn)</h3>
+                                    <p>$14.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-seasonal.jpg"
+                                        alt="ordered product - seasonal specials"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Hot Cross Buns (6-pack, Easter)</h3>
+                                    <p>$8.50</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-seasonal.jpg"
+                                        alt="ordered product - seasonal specials"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Mince Pies (6-pack, Christmas)</h3>
+                                    <p>$7.50</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-seasonal.jpg"
+                                        alt="ordered product - seasonal specials"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Summer Berry Tart (Summer)</h3>
+                                    <p>$5.50</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-seasonal.jpg"
+                                        alt="ordered product - seasonal specials"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Gingerbread Cookies (Christmas)</h3>
+                                    <p>$6.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-event.jpg"
+                                        alt="ordered product - special events"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Wedding Cake (Custom, 3-tier)</h3>
+                                    <p>$180.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-event.jpg"
+                                        alt="ordered product - special events"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Birthday Cake (Custom)</h3>
+                                    <p>$45.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-event.jpg"
+                                        alt="ordered product - special events"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Anniversary Cupcakes (6-pack)</h3>
+                                    <p>$18.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card flex items-center p-5 bg-[#fff8ee] hover:bg-[#e6dfd6] rounded-lg w-full gap-4">
+                                <div class="rounded-lg overflow-hidden w-64 aspect-square">
+                                    <img src="img/products/products-event.jpg"
+                                        alt="ordered product - special events"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full gap-3">
+                                    <h3 class="uppercase text-base sm:text-lg font-semibold tracking-widest">Company Dessert Platter</h3>
+                                    <p>$55.00</p>
+                                    <p>In Stock</p>
+                                    <div class="flex items-center justify-center">
+                                        <button aria-label="add-to-order" type="button" class=" bg-[#51658f] hover:bg-[#364464] text-white py-2 px-4 rounded-lg">
+                                            Add to Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Footer Section -->
-            <footer class="bg-[#51658f] text-white py-10">
+            <footer class="bg-[#51658f] text-[#fff8ee] py-10">
                 <div class="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-8">
                     <!-- Address Section -->
                     <div class="flex flex-col items-center md:items-start">
@@ -203,7 +1377,7 @@
                     <div id="items" class="flex flex-col gap-5 pb-5">
                         <div class="p-5 bg-[#e6dfd6] rounded-lg flex flex-col sm:flex-row w-100 gap-8">
                             <div class="rounded-lg overflow-hidden sm:w-32 aspect-square">
-                                <img src="img/bread.jpg"
+                                <img src="img/products/products-bread.jpg"
                                     alt="ordered product - bread"
                                     class="w-full h-full object-cover">
                             </div>
@@ -228,7 +1402,7 @@
                         </div>
                         <div class="p-5 bg-[#e6dfd6] rounded-lg flex flex-col sm:flex-row w-100 gap-8">
                             <div class="rounded-lg overflow-hidden sm:w-32 aspect-square">
-                                <img src="img/bread.jpg"
+                                <img src="img/products/products-bread.jpg"
                                     alt="ordered product - bread"
                                     class="w-full h-full object-cover">
                             </div>
@@ -320,10 +1494,31 @@
             </div>
         </div>
         <div class="filters hidden fixed inset-0 bg-black bg-opacity-50 z-[9997] items-center justify-center">
-            <div class="bg-[#fff8ee] rounded-lg p-8 w-11/12 max-w-md text-[#51658f] flex flex-col gap-6">
-                <i class="fa-solid fa-xmark text-3xl text-right cursor-pointer" onclick="closeFilters()"></i>
-                <h2 class="uppercase lg:text-2xl text-center font-bold tracking-widest">Price Range</h2>
-                
+            <div class="bg-[#fff8ee] rounded-lg p-8 w-11/12 max-w-md flex flex-col gap-6">
+                <i class="fa-solid fa-xmark text-3xl text-right cursor-pointer text-[#51658f]" onclick="closeFilters()"></i>
+                <div class="flex flex-col">
+                    <label for="price-range" class="uppercase lg:text-2xl text-center text-[#51658f] font-bold tracking-widest mb-4">Price Range</label>
+                    <input id="price-range" type="range" min="0" max="100" value="50" class="w-full cursor-grab active:cursor-grabbing"/>
+                    <div class="flex justify-between text-sm mt-1 text-[#51658f]">
+                        <span>$0</span>
+                        <span>$200</span>
+                    </div>
+
+                </div>
+                <div class="flex flex-col text-[#51658f]">
+                    <label for="category" class="uppercase lg:text-2xl text-center text-[#51658f] font-bold tracking-widest mb-4">Categories</label>
+                    <div class="w-full flex gap-2 justify-center flex-wrap">
+                        <div class="py-2 px-4 mb-2 bg-orange-400 hover:bg-orange-500 rounded-lg cursor-pointer font-semibold">Bread</div>
+                        <div class="py-2 px-4 mb-2 bg-orange-400 hover:bg-orange-500 rounded-lg cursor-pointer font-semibold">Cakes</div>
+                        <div class="py-2 px-4 mb-2 bg-orange-400 hover:bg-orange-500 rounded-lg cursor-pointer font-semibold">Cookies &amp; Biscuits</div>
+                        <div class="py-2 px-4 mb-2 bg-orange-400 hover:bg-orange-500 rounded-lg cursor-pointer font-semibold">Desserts</div>
+                        <div class="py-2 px-4 mb-2 bg-orange-400 hover:bg-orange-500 rounded-lg cursor-pointer font-semibold">Pastries</div>  
+                        <div class="py-2 px-4 mb-2 bg-orange-400 hover:bg-orange-500 rounded-lg cursor-pointer font-semibold">Pies &amp; Tarts</div>
+                        <div class="py-2 px-4 mb-2 bg-orange-400 hover:bg-orange-500 rounded-lg cursor-pointer font-semibold">Savory Bakes</div>
+                        <div class="py-2 px-4 mb-2 bg-orange-400 hover:bg-orange-500 rounded-lg cursor-pointer font-semibold">Seasonal Specials</div>
+                        <div class="py-2 px-4 mb-2 bg-orange-400 hover:bg-orange-500 rounded-lg cursor-pointer font-semibold">Special Events</div>
+                    </div>
+                </div>
             </div>
         </div>
         <script src="main.js"></script>
